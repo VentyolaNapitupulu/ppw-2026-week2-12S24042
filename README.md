@@ -1,30 +1,30 @@
 # Ventyola Rohati Napitupulu | Portofolio
 
 ## Deskripsi
-Website portofolio single page untuk Ventyola Rohati Napitupulu, mahasiswa Sistem Informasi Institut Teknologi Del. Situs ini menampilkan profil, karya, dan formulir layanan dengan pendekatan visual yang personal, playful, dan berbasis data.
+Website portofolio single page untuk Ventyola Rohati Napitupulu, mahasiswa Sistem Informasi Institut Teknologi Del. Situs ini menampilkan profil personal, pengalaman organisasi dan praktik, studi kasus karya, serta formulir layanan dengan konsep visual yang playful, personal, dan berakar pada budaya Batak serta Danau Toba.
 
-## Fitur
-- Layout single page dengan navigasi antar section menggunakan anchor link
-- Hero dengan lencana dan headline personal yang khas
-- Section tentang, portofolio, dan layanan sesuai brief
-- Tabel rekap karya, formulir aksesibel, dan sticky note kontak
-- Tema visual bergaya meja kerja penuh stiker dengan sentuhan Batak dan Danau Toba
+## Daftar fitur
+- Layout single page dengan navigasi anchor ke section utama
+- Hero dengan badge, headline khas, dan elemen dekoratif SVG kecil
+- Section Tentang Saya berisi bio, peran, keahlian, alur kerja, dan prestasi
+- Section Portofolio Karya berisi 4 studi kasus dan tabel rekap karya
+- Formulir layanan dengan validasi HTML dan aksesibilitas yang sesuai brief
+- Sticky note kontak di samping form untuk kontak cepat
+- Desain kertas berpola titik dan strip ulos sebagai identitas visual
 
 ## Teknologi
 - HTML5
 - CSS3
-- Google Fonts (Bricolage Grotesque, DM Sans, Caveat)
+- Google Fonts: Bricolage Grotesque, DM Sans, Caveat
 - Tanpa JavaScript, tanpa framework, tanpa library tambahan
 
 ## Cara menjalankan
-Buka file `index.html` di browser, atau gunakan Live Server dari editor VS Code untuk melihat halaman secara lokal.
+1. Buka file index.html di browser, atau
+2. Jalankan ekstensi Live Server di VS Code pada project ini.
 
 ## GitHub Pages
-[ISI: tautan GitHub Pages]
+https://github.com/VentyolaNapitupulu/ppw-2026-week2-12S24042.git
 
-## Placeholder screenshot
-- Desktop: [ISI: screenshot desktop]
-- Mobile: [ISI: screenshot mobile]
 
 ## Struktur folder
 ```text
@@ -35,6 +35,3 @@ Buka file `index.html` di browser, atau gunakan Live Server dari editor VS Code 
 ├── assets/
 │   └── img/
 ```
-
-## Catatan aset
-Nama file gambar yang digunakan mengikuti brief, namun file gambar belum tersedia di folder `assets/img/` pada saat ini.
