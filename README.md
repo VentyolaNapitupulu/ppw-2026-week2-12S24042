@@ -1,7 +1,7 @@
 # Ventyola Rohati Napitupulu | Portofolio
 
 ## Deskripsi
-Website portofolio single page untuk Ventyola Rohati Napitupulu, mahasiswa Sistem Informasi Institut Teknologi Del. Situs ini menampilkan profil personal, pengalaman organisasi dan praktik, studi kasus karya, serta formulir layanan dengan konsep visual yang playful, personal, dan berakar pada budaya Batak serta Danau Toba.
+Website portofolio single page untuk Ventyola Rohati Napitupulu, mahasiswa Sistem Informasi Institut Teknologi Del. Situs ini menampilkan profil personal, pengalaman organisasi dan praktik, studi kasus karya, serta formulir layanan dengan konsep visual yang playful, dan personal.
 
 ## Daftar fitur
 - Layout single page dengan navigasi anchor ke section utama
