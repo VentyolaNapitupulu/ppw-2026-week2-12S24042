@@ -14,6 +14,11 @@
       href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;700&family=Caveat:wght@500;700&display=swap"
       rel="stylesheet"
     />
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- CSS Kustom -->
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -22,12 +27,25 @@
     <header class="site-header">
       <div class="container nav-wrap">
         <a href="#top" class="brand" aria-label="Beranda">Ventyola</a>
-        <nav aria-label="Navigasi utama">
-          <ul class="nav-list">
-            <li><a href="#tentang">Tentang</a></li>
-            <li><a href="#portofolio">Portofolio</a></li>
-            <li><a href="#layanan">Layanan</a></li>
-          </ul>
+        <nav class="navbar navbar-expand-lg site-navbar" aria-label="Navigasi utama">
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#main-navigation"
+            aria-controls="main-navigation"
+            aria-expanded="false"
+            aria-label="Buka menu navigasi"
+          >
+            <i class="bi bi-list" aria-hidden="true"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="main-navigation">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item"><a class="nav-link" href="#tentang">Tentang</a></li>
+              <li class="nav-item"><a class="nav-link" href="#portofolio">Portofolio</a></li>
+              <li class="nav-item"><a class="nav-link" href="#layanan">Layanan</a></li>
+            </ul>
+          </div>
         </nav>
       </div>
     </header>
@@ -212,106 +230,52 @@
             <h2 id="portfolio-title">Karya yang tumbuh dari kebutuhan nyata.</h2>
           </div>
 
-          <article class="case-study case-left" aria-labelledby="case-imuniku-title">
-            <div class="case-copy">
-              <p class="case-meta">UI/UX · 2026 · ImuniKu</p>
-              <h3 id="case-imuniku-title">ImuniKu</h3>
-              <p>
-                Aplikasi mobile pendamping imunisasi anak, dengan celah cakupan imunisasi anak Indonesia
-                yang masih rendah: 35,8%. Aku menelusuri problem yang terjadi di lapangan melalui
-                observasi di Kabupaten Toba, wawancara 7 ibu, dan survei 20 orang tua.
-              </p>
-              <p>
-                Masalah dibingkai ulang dari “mencatat imunisasi” menjadi “mendukung keputusan di tengah
-                ketidakpastian”. Solusinya adalah penjelasan vaksin di kartu jadwal, notifikasi yang lebih
-                fleksibel, serta mode panduan 48 jam pasca-imunisasi.
-              </p>
-              <p>
-                Prototype Figma lebih dari 25 layar dan usability test Maze pada 13 partisipan membantu
-                menilai keterbacaan, tingkat error, dan tingkat drop-off saat registrasi. Hasilnya memberi
-                arah perbaikan yang konkret.
-              </p>
-              <a href="https://bit.ly/ImunikuAppProject" target="_blank" rel="noreferrer">Lihat proyek ImuniKu</a>
+          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 portfolio-grid">
+            <div class="col">
+              <article class="card portfolio-card h-100" aria-labelledby="case-imuniku-title">
+                <img class="card-img-top" src="assets/img/imuniku.jpg" alt="Tampilan aplikasi ImuniKu dengan fokus pada jadwal imunisasi" width="720" height="520" />
+                <div class="card-body">
+                  <span class="portfolio-badge">UI/UX · 2026</span>
+                  <h3 class="card-title" id="case-imuniku-title">ImuniKu</h3>
+                  <p class="card-text">Aplikasi mobile pendamping imunisasi anak, dengan celah cakupan imunisasi anak Indonesia yang masih rendah: 35,8%.</p>
+                  <button class="btn button button-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-imuniku">Lihat detail</button>
+                </div>
+              </article>
             </div>
-            <figure class="case-visual visual-tilt-left">
-              <img src="assets/img/imuniku.jpg" alt="Tampilan aplikasi ImuniKu dengan fokus pada jadwal imunisasi" width="720" height="520" />
-            </figure>
-          </article>
-
-          <article class="case-study case-right" aria-labelledby="case-triporia-title">
-            <figure class="case-visual visual-tilt-right">
-              <img src="assets/img/triporia.jpg" alt="Tampilan platform Triporia untuk wisata Samosir dan Danau Toba" width="720" height="520" />
-            </figure>
-            <div class="case-copy">
-              <p class="case-meta">Technopreneurship · 2025 · Triporia</p>
-              <h3 id="case-triporia-title">Triporia</h3>
-              <p>
-                Platform wisata Samosir dan Danau Toba dengan tim 5 orang, di mana peranku sebagai UI/UX Designer.
-                Temuan lapangan menunjukkan hambatan utama bukan pada harga, tetapi pada kepercayaan.
-              </p>
-              <p>
-                Aku menyusun alur transportasi, pemandu, dan akomodasi dalam satu pengalaman yang lebih jelas,
-                dilengkapi badge terverifikasi, rating, review, transparansi harga, dashboard admin, dan identitas
-                visual merah-hitam ulos untuk membangun rasa aman dan familiar.
-              </p>
-              <p>
-                Prototipe lebih dari 25 layar dibuat agar perjalanan pengguna terasa utuh, mulai dari discovery
-                hingga booking. Solusi ini menekankan pengalaman yang meyakinkan dan dapat dipercaya.
-              </p>
-              <a href="https://bit.ly/Triporia-Project" target="_blank" rel="noreferrer">Lihat proyek Triporia</a>
+            <div class="col">
+              <article class="card portfolio-card h-100" aria-labelledby="case-triporia-title">
+                <img class="card-img-top" src="assets/img/triporia.jpg" alt="Tampilan platform Triporia untuk wisata Samosir dan Danau Toba" width="720" height="520" />
+                <div class="card-body">
+                  <span class="portfolio-badge badge-sky">Technopreneurship · 2025</span>
+                  <h3 class="card-title" id="case-triporia-title">Triporia</h3>
+                  <p class="card-text">Platform wisata Samosir dan Danau Toba dengan tim 5 orang, di mana peranku sebagai UI/UX Designer.</p>
+                  <button class="btn button button-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-triporia">Lihat detail</button>
+                </div>
+              </article>
             </div>
-          </article>
-
-          <article class="case-study case-left" aria-labelledby="case-tobaverse-title">
-            <div class="case-copy">
-              <p class="case-meta">Del AI Hackathon IT Del 2026 · TobaVerse</p>
-              <h3 id="case-tobaverse-title">TobaVerse</h3>
-              <p>
-                Tim 3 orang, ini adalah pengalaman pertama ikut hackathon dan berhadapan dengan AI/ML.
-                Kami membangun asisten perjalanan AI berbasis chatbot RAG dan perencana perjalanan untuk wisata Danau Toba.
-              </p>
-              <p>
-                Masalah utama adalah rekomendasi sering tidak sesuai kategori, sehingga retrieval dan filtering
-                diperbaiki agar hasil lebih tepat. Identitas visual diangkat dari ulos, gorga, dan palet maroon-emas.
-              </p>
-              <p>
-                Kami tidak lolos penyisihan, dan itu memberi pelajaran yang jujur: masuk ke domain baru, bekerja
-                dengan batasan lomba, menguji produk, dan berani iterasi di tengah ketidakpastian.
-              </p>
-              <a href="https://github.com/VentyolaNapitupulu/tobaverse-ai.git" target="_blank" rel="noreferrer">Lihat repositori TobaVerse</a>
+            <div class="col">
+              <article class="card portfolio-card h-100" aria-labelledby="case-tobaverse-title">
+                <img class="card-img-top" src="assets/img/tobaverse.jpg" alt="Visual TobaVerse dengan tema wisata Danau Toba dan AI assistant" width="720" height="520" />
+                <div class="card-body">
+                  <span class="portfolio-badge badge-rose">AI · Hackathon 2026</span>
+                  <h3 class="card-title" id="case-tobaverse-title">TobaVerse</h3>
+                  <p class="card-text">Kami membangun asisten perjalanan AI berbasis chatbot RAG dan perencana perjalanan untuk wisata Danau Toba.</p>
+                  <button class="btn button button-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-tobaverse">Lihat detail</button>
+                </div>
+              </article>
             </div>
-            <figure class="case-visual visual-tilt-left">
-              <img src="assets/img/tobaverse.jpg" alt="Visual TobaVerse dengan tema wisata Danau Toba dan AI assistant" width="720" height="520" />
-            </figure>
-          </article>
-
-          <article class="case-study case-right" aria-labelledby="case-statistik-title">
-            <figure class="case-visual visual-tilt-right">
-              <img src="assets/img/infografis-kopi.jpg" alt="Infografis Agen Statistik tentang kopi Toba" width="720" height="520" />
-            </figure>
-            <div class="case-copy">
-              <p class="case-meta">Agen Statistik · Mar 2026-sekarang</p>
-              <h3 id="case-statistik-title">Agen Statistik</h3>
-              <p>
-                Saya membuat 3 infografis dan 1 video berbasis data BPS dengan fokus pada isu-isu yang hidup di masyarakat.
-                Salah satunya membahas mengapa lahan bertambah, tetapi nilai di tingkat petani tidak ikut naik.
-              </p>
-              <p>
-                Video dan infografis juga menjelaskan jasa menyalip pertanian dalam struktur lapangan kerja Toba,
-                serta kesenjangan akses fasilitas literasi antar-kecamatan. Pekerjaan ini menekankan bagaimana data
-                dapat dibaca sebagai narasi yang jelas dan relevan.
-              </p>
-              <p>
-                Proyek ini mendorong saya untuk membangun komunikasi visual yang tidak sekadar cantik, tetapi juga
-                membantu publik mencerna sesuatu yang kompleks dengan lebih mudah.
-              </p>
-              <div class="case-links">
-                <a href="https://bit.ly/4wYk9ZW" target="_blank" rel="noreferrer">Infografis kopi</a>
-                <a href="https://bit.ly/4qUDrOj" target="_blank" rel="noreferrer">Infografis jasa</a>
-                <a href="https://www.instagram.com/reel/DavBvzLyeMy/" target="_blank" rel="noreferrer">Video</a>
-              </div>
+            <div class="col">
+              <article class="card portfolio-card h-100" aria-labelledby="case-statistik-title">
+                <img class="card-img-top" src="assets/img/infografis-kopi.jpg" alt="Infografis Agen Statistik tentang kopi Toba" width="720" height="520" />
+                <div class="card-body">
+                  <span class="portfolio-badge badge-mint">Agen Statistik · 2026</span>
+                  <h3 class="card-title" id="case-statistik-title">Agen Statistik</h3>
+                  <p class="card-text">Saya membuat 3 infografis dan 1 video berbasis data BPS dengan fokus pada isu-isu yang hidup di masyarakat.</p>
+                  <button class="btn button button-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-statistik">Lihat detail</button>
+                </div>
+              </article>
             </div>
-          </article>
+          </div>
 
           <div class="table-wrap">
             <table>
@@ -331,7 +295,7 @@
                   <td>Computational Thinking Workshop</td>
                   <td>Problem Solving in Digital World</td>
                   <td>Fasilitator</td>
-                  <td>30+ siswa kelas 3 SD, soal Bebras “Si Kecil”, pre-test dan post-test</td>
+                  <td>30+ siswa kelas 3 SD, soal Bebras "Si Kecil", pre-test dan post-test</td>
                 </tr>
                 <tr>
                   <td>2025</td>
@@ -392,37 +356,49 @@
         <div class="container service-layout">
           <div class="form-panel">
             <div class="section-heading form-heading">
-              <p class="eyebrow">Formulir Layanan</p>
+              <p class="eyebrow"><i class="bi bi-chat-left-fill"></i>  Formulir Layanan</p>
+              
               <h2 id="layanan-title">Aku siap membantu mewujudkan ide menjadi pengalaman yang jelas.</h2>
             </div>
 
             <!-- Form ini demo tampilan: belum mengirim pesan. -->
-            <form method="get" action="#" aria-describedby="form-help">
+            <form class="needs-validation" method="get" action="#" aria-describedby="form-help" novalidate>
               <fieldset>
                 <legend>Tentang Kamu</legend>
                 <div class="field-grid">
                   <div class="field">
-                    <label for="nama">Nama</label>
-                    <input id="nama" name="nama" type="text" required aria-describedby="nama-help" />
+                    <div class="form-floating">
+                      <input class="form-control" id="nama" name="nama" type="text" placeholder="Nama" required aria-describedby="nama-help nama-invalid nama-valid" />
+                      <label for="nama">Nama</label>
+                    </div>
                     <small id="nama-help">Tulis nama lengkap atau nama yang ingin aku panggil.</small>
+                    <div class="invalid-feedback" id="nama-invalid">Nama wajib diisi.</div>
+                    <div class="valid-feedback" id="nama-valid">Nama sudah terisi.</div>
                   </div>
 
                   <div class="field">
-                    <label for="email">Email</label>
-                    <input id="email" name="email" type="email" required aria-describedby="email-help" />
+                    <div class="input-group has-validation">
+                      <span class="input-group-text"><i class="bi bi-envelope" aria-hidden="true"></i><span class="visually-hidden">Email</span></span>
+                      <div class="form-floating">
+                        <input class="form-control" id="email" name="email" type="email" placeholder="nama@email.com" required aria-describedby="email-help email-invalid email-valid" />
+                        <label for="email">Email</label>
+                      </div>
+                      <div class="invalid-feedback" id="email-invalid">Masukkan alamat email yang valid.</div>
+                      <div class="valid-feedback" id="email-valid">Alamat email valid.</div>
+                    </div>
                     <small id="email-help">Contoh: nama@email.com</small>
                   </div>
 
                   <div class="field full-width">
-                    <label for="telepon">Telepon/WhatsApp</label>
-                    <input
-                      id="telepon"
-                      name="telepon"
-                      type="tel"
-                      pattern="[0-9+\-\s()]{8,20}"
-                      required
-                      aria-describedby="telepon-help"
-                    />
+                    <div class="input-group has-validation">
+                      <span class="input-group-text"><i class="bi bi-telephone" aria-hidden="true"></i><span class="visually-hidden">Telepon atau WhatsApp</span></span>
+                      <div class="form-floating">
+                        <input class="form-control" id="telepon" name="telepon" type="tel" placeholder="08xxxxxxxxxx" pattern="(?:[0-9]|\+|\(|\)|\s|-){8,20}" required aria-describedby="telepon-help telepon-invalid telepon-valid" />
+                        <label for="telepon">Telepon/WhatsApp</label>
+                      </div>
+                      <div class="invalid-feedback" id="telepon-invalid">Masukkan nomor 8–20 karakter menggunakan angka atau tanda yang diizinkan.</div>
+                      <div class="valid-feedback" id="telepon-valid">Nomor telepon valid.</div>
+                    </div>
                     <small id="telepon-help">Masukkan nomor yang bisa dihubungi.</small>
                   </div>
                 </div>
@@ -432,36 +408,40 @@
                 <legend>Kebutuhanmu</legend>
                 <div class="field-grid">
                   <div class="field full-width">
-                    <label for="jenis-layanan">Jenis layanan</label>
-                    <select id="jenis-layanan" name="jenis-layanan" required aria-describedby="layanan-help">
-                      <option value="">Pilih layanan</option>
-                      <option>Konsultasi UI/UX dan usability testing</option>
-                      <option>Desain infografis dari data</option>
-                      <option>Workshop literasi digital &amp; AI (Gemini)</option>
-                      <option>Mentoring Basis Data &amp; SQL</option>
-                      <option>Workshop berpikir komputasional untuk anak SD</option>
-                    </select>
+                    <div class="form-floating">
+                      <select class="form-select" id="jenis-layanan" name="jenis-layanan" required aria-describedby="layanan-help layanan-invalid layanan-valid">
+                        <option value="">Pilih layanan</option>
+                        <option>Konsultasi UI/UX dan usability testing</option>
+                        <option>Desain infografis dari data</option>
+                        <option>Workshop literasi digital &amp; AI (Gemini)</option>
+                        <option>Mentoring Basis Data &amp; SQL</option>
+                        <option>Workshop berpikir komputasional untuk anak SD</option>
+                      </select>
+                      <label for="jenis-layanan">Jenis layanan</label>
+                    </div>
                     <small id="layanan-help">Pilih yang paling sesuai dengan kebutuhanmu.</small>
+                    <div class="invalid-feedback" id="layanan-invalid">Pilih jenis layanan.</div>
+                    <div class="valid-feedback" id="layanan-valid">Jenis layanan sudah dipilih.</div>
                   </div>
 
                   <div class="field">
-                    <label for="jumlah">Estimasi jumlah peserta atau layar</label>
-                    <input
-                      id="jumlah"
-                      name="jumlah"
-                      type="number"
-                      min="1"
-                      max="500"
-                      required
-                      aria-describedby="jumlah-help"
-                    />
+                    <div class="form-floating">
+                      <input class="form-control" id="jumlah" name="jumlah" type="number" min="1" max="500" placeholder="1" required aria-describedby="jumlah-help jumlah-invalid jumlah-valid" />
+                      <label for="jumlah">Estimasi jumlah peserta atau layar</label>
+                    </div>
                     <small id="jumlah-help">Masukkan angka 1 sampai 500.</small>
+                    <div class="invalid-feedback" id="jumlah-invalid">Masukkan angka antara 1 sampai 500.</div>
+                    <div class="valid-feedback" id="jumlah-valid">Jumlah sudah sesuai.</div>
                   </div>
 
                   <div class="field full-width">
-                    <label for="pesan">Pesan</label>
-                    <textarea id="pesan" name="pesan" rows="5" required aria-describedby="pesan-help"></textarea>
+                    <div class="form-floating">
+                      <textarea class="form-control" id="pesan" name="pesan" placeholder="Ceritakan kebutuhanmu" rows="5" required aria-describedby="pesan-help pesan-invalid pesan-valid"></textarea>
+                      <label for="pesan">Pesan</label>
+                    </div>
                     <small id="pesan-help">Ceritakan konteks, tujuan, dan tantangan yang kamu hadapi.</small>
+                    <div class="invalid-feedback" id="pesan-invalid">Pesan wajib diisi.</div>
+                    <div class="valid-feedback" id="pesan-valid">Pesan sudah terisi.</div>
                   </div>
                 </div>
               </fieldset>
@@ -471,25 +451,29 @@
                 <div class="field-grid">
                   <div class="field full-width radio-group">
                     <div class="radio-row">
-                      <input id="hubungi-wa" name="hubungi" type="radio" value="WhatsApp" required />
+                      <input id="hubungi-wa" name="hubungi" type="radio" value="WhatsApp" required aria-describedby="hubungi-invalid hubungi-valid" />
                       <label for="hubungi-wa">WhatsApp</label>
                     </div>
                     <div class="radio-row">
-                      <input id="hubungi-email" name="hubungi" type="radio" value="Email" required />
+                      <input id="hubungi-email" name="hubungi" type="radio" value="Email" required aria-describedby="hubungi-invalid hubungi-valid" />
                       <label for="hubungi-email">Email</label>
                     </div>
+                    <div class="invalid-feedback" id="hubungi-invalid">Pilih cara untuk dihubungi.</div>
+                    <div class="valid-feedback" id="hubungi-valid">Cara menghubungi sudah dipilih.</div>
                   </div>
 
                   <div class="field full-width checkbox-row">
-                    <input id="persetujuan" name="persetujuan" type="checkbox" required aria-describedby="persetujuan-help" />
+                    <input id="persetujuan" name="persetujuan" type="checkbox" required aria-describedby="persetujuan-help persetujuan-invalid persetujuan-valid" />
                     <label for="persetujuan">Saya setuju untuk dihubungi sesuai kebutuhan kolaborasi.</label>
                     <small id="persetujuan-help">Saya memahami ini hanya contoh tampilan.</small>
+                    <div class="invalid-feedback" id="persetujuan-invalid">Persetujuan diperlukan untuk mengirim formulir.</div>
+                    <div class="valid-feedback" id="persetujuan-valid">Persetujuan sudah diberikan.</div>
                   </div>
                 </div>
               </fieldset>
 
               <div class="form-actions">
-                <button type="submit" class="button button-primary">Kirim permintaan konsultasi</button>
+                <button type="submit" class="btn button button-primary">Kirim permintaan konsultasi</button>
               </div>
               <p id="form-help" class="form-note">
                 Formulir ini contoh tampilan dan belum mengirim pesan, untuk menghubungiku langsung pakai email di sticky-note.
@@ -516,6 +500,82 @@
       </section>
     </main>
 
+    <div class="modal fade project-modal" id="modal-imuniku" tabindex="-1" aria-labelledby="modal-imuniku-title" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title" id="modal-imuniku-title">ImuniKu</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+          </div>
+          <div class="modal-body">
+            <p class="case-meta">UI/UX · 2026 · ImuniKu</p>
+            <p>Aplikasi mobile pendamping imunisasi anak, dengan celah cakupan imunisasi anak Indonesia yang masih rendah: 35,8%. Aku menelusuri problem yang terjadi di lapangan melalui observasi di Kabupaten Toba, wawancara 7 ibu, dan survei 20 orang tua.</p>
+            <p>Masalah dibingkai ulang dari "mencatat imunisasi" menjadi "mendukung keputusan di tengah ketidakpastian". Solusinya adalah penjelasan vaksin di kartu jadwal, notifikasi yang lebih fleksibel, serta mode panduan 48 jam pasca-imunisasi.</p>
+            <p>Prototype Figma lebih dari 25 layar dan usability test Maze pada 13 partisipan membantu menilai keterbacaan, tingkat error, dan tingkat drop-off saat registrasi. Hasilnya memberi arah perbaikan yang konkret.</p>
+            <a class="btn button button-secondary" href="https://bit.ly/ImunikuAppProject" target="_blank" rel="noreferrer">Lihat proyek ImuniKu</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade project-modal" id="modal-triporia" tabindex="-1" aria-labelledby="modal-triporia-title" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title" id="modal-triporia-title">Triporia</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+          </div>
+          <div class="modal-body">
+            <p class="case-meta">Technopreneurship · 2025 · Triporia</p>
+            <p>Platform wisata Samosir dan Danau Toba dengan tim 5 orang, di mana peranku sebagai UI/UX Designer. Temuan lapangan menunjukkan hambatan utama bukan pada harga, tetapi pada kepercayaan.</p>
+            <p>Aku menyusun alur transportasi, pemandu, dan akomodasi dalam satu pengalaman yang lebih jelas, dilengkapi badge terverifikasi, rating, review, transparansi harga, dashboard admin, dan identitas visual merah-hitam ulos untuk membangun rasa aman dan familiar.</p>
+            <p>Prototipe lebih dari 25 layar dibuat agar perjalanan pengguna terasa utuh, mulai dari discovery hingga booking. Solusi ini menekankan pengalaman yang meyakinkan dan dapat dipercaya.</p>
+            <a class="btn button button-secondary" href="https://bit.ly/Triporia-Project" target="_blank" rel="noreferrer">Lihat proyek Triporia</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade project-modal" id="modal-tobaverse" tabindex="-1" aria-labelledby="modal-tobaverse-title" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title" id="modal-tobaverse-title">TobaVerse</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+          </div>
+          <div class="modal-body">
+            <p class="case-meta">Del AI Hackathon IT Del 2026 · TobaVerse</p>
+            <p>Tim 3 orang, ini adalah pengalaman pertama ikut hackathon dan berhadapan dengan AI/ML. Kami membangun asisten perjalanan AI berbasis chatbot RAG dan perencana perjalanan untuk wisata Danau Toba.</p>
+            <p>Masalah utama adalah rekomendasi sering tidak sesuai kategori, sehingga retrieval dan filtering diperbaiki agar hasil lebih tepat. Identitas visual diangkat dari ulos, gorga, dan palet maroon-emas.</p>
+            <p>Kami tidak lolos penyisihan, dan itu memberi pelajaran yang jujur: masuk ke domain baru, bekerja dengan batasan lomba, menguji produk, dan berani iterasi di tengah ketidakpastian.</p>
+            <a class="btn button button-secondary" href="https://github.com/VentyolaNapitupulu/tobaverse-ai.git" target="_blank" rel="noreferrer">Lihat repositori TobaVerse</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade project-modal" id="modal-statistik" tabindex="-1" aria-labelledby="modal-statistik-title" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-scrollable">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h2 class="modal-title" id="modal-statistik-title">Agen Statistik</h2>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+          </div>
+          <div class="modal-body">
+            <p class="case-meta">Agen Statistik · Mar 2026-sekarang</p>
+            <p>Saya membuat 3 infografis dan 1 video berbasis data BPS dengan fokus pada isu-isu yang hidup di masyarakat. Salah satunya membahas mengapa lahan bertambah, tetapi nilai di tingkat petani tidak ikut naik.</p>
+            <p>Video dan infografis juga menjelaskan jasa menyalip pertanian dalam struktur lapangan kerja Toba, serta kesenjangan akses fasilitas literasi antar-kecamatan. Pekerjaan ini menekankan bagaimana data dapat dibaca sebagai narasi yang jelas dan relevan.</p>
+            <p>Proyek ini mendorong saya untuk membangun komunikasi visual yang tidak sekadar cantik, tetapi juga membantu publik mencerna sesuatu yang kompleks dengan lebih mudah.</p>
+            <div class="case-links">
+              <a class="btn button button-secondary" href="https://bit.ly/4wYk9ZW" target="_blank" rel="noreferrer">Infografis kopi</a>
+              <a class="btn button button-secondary" href="https://bit.ly/4qUDrOj" target="_blank" rel="noreferrer">Infografis jasa</a>
+              <a class="btn button button-secondary" href="https://www.instagram.com/reel/DavBvzLyeMy/" target="_blank" rel="noreferrer">Video</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <footer class="site-footer">
       <div class="container footer-wrap">
         <div>
@@ -531,5 +591,23 @@
         </nav>
       </div>
     </footer>
+    <!-- Script JavaScript Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script>
+      (() => {
+        const forms = document.querySelectorAll('.needs-validation');
+
+        Array.from(forms).forEach((form) => {
+          form.addEventListener('submit', (event) => {
+            if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+
+            form.classList.add('was-validated');
+          }, false);
+        });
+      })();
+    </script>
   </body>
 </html>
