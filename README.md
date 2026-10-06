@@ -17,8 +17,8 @@ Pada Minggu 3, proyek ini **direfaktor dari HTML5 + CSS murni (Minggu 2) menjadi
 - Navbar responsif dengan tombol hamburger (Bootstrap collapse) untuk layar ponsel
 - Hero dengan badge, headline khas, dan elemen dekoratif SVG
 - Section Tentang Saya: bio, peran, keahlian, alur kerja, dan prestasi
-- Section Portofolio Karya: grid 4 kartu proyek (Bootstrap `row-cols-1/md-2/lg-3`), masing-masing terhubung ke Modal detail berisi studi kasus lengkap
-- Formulir layanan Bootstrap: Floating Labels, Input Group berikon, validasi visual (`invalid-feedback`/`valid-feedback`)
+- Section Portofolio Karya: data kartu dan detail dimuat dari JSON, disaring di sisi klien, dan ditampilkan dalam satu modal universal
+- Formulir layanan Bootstrap: Floating Labels, validasi visual, simulasi pengiriman pesanan, toast, dan riwayat pesanan di `localStorage`
 - Tabel rekap karya dan pengalaman
 - Sticky note kontak cepat di samping formulir
 
@@ -28,7 +28,56 @@ Pada Minggu 3, proyek ini **direfaktor dari HTML5 + CSS murni (Minggu 2) menjadi
 - CSS3 (24 custom properties di `:root`, dimuat setelah Bootstrap agar override konsisten tanpa `!important`)
 - Bootstrap 5.3.8 (CDN) + Bootstrap Icons 1.11.3
 - JavaScript bawaan Bootstrap (collapse, modal) + skrip validasi form standar Bootstrap
+- JavaScript Data Access Layer (`js/api-service.js`) dan Presentation Layer (`js/app.js`)
+- JSON statis (`data/`) sebagai sumber data; tidak ada backend atau database sungguhan
 - Google Fonts: Bricolage Grotesque, DM Sans, Caveat
+
+## Arsitektur Minggu 4
+
+### C4 Container Model
+
+```mermaid
+C4Container
+    title C4 Container Model — Portofolio Minggu 4
+
+    Person(user, "Pengguna", "Mengakses portofolio melalui browser")
+    Container(browser, "Browser", "Client / Presentation Tier", "Merender index.html dan js/app.js; js/api-service.js mengambil data dan mengelola simulasi pesanan.")
+    System_Ext(pages, "GitHub Pages", "Static CDN Hosting", "Menyajikan file situs sebagai konten statis; tidak menjalankan backend.")
+    Container(json, "File JSON di /data", "JSON statis", "projects.json, services.json, profile.json; berperan sebagai simulasi JSON Provider/mock REST API, bukan server API sungguhan.")
+
+    Rel(user, browser, "Membuka halaman dan berinteraksi")
+    Rel(browser, pages, "Meminta index.html, CSS, dan JavaScript melalui HTTPS")
+    Rel(browser, json, "GET /data/projects.json, /data/services.json, /data/profile.json melalui GitHub Pages")
+    Rel(pages, json, "Menyajikan berkas JSON yang di-host secara statis")
+    Rel(json, browser, "Mengembalikan data JSON statis")
+```
+
+Diagram ini menggambarkan hosting statis, bukan layanan backend: browser mengambil file JSON yang di-host sebagai aset melalui GitHub Pages. Pengiriman formulir layanan juga hanya simulasi di browser; riwayatnya disimpan di `localStorage`, bukan dikirim ke server atau database.
+
+### Separation of Concerns
+
+Pada Minggu 4, data proyek, layanan, dan profil ditempatkan terpisah dalam file JSON di `data/`. File-file ini menjadi sumber data statis yang dapat dibaca browser, bukan database dan bukan API backend sungguhan. Pemisahan ini membuat pembaruan konten lebih terarah: isi data dapat diubah tanpa mencari dan mengedit markup kartu atau modal satu per satu.
+
+Logika akses data dipusatkan di `js/api-service.js`, sedangkan `js/app.js` menangani presentasi dan interaksi seperti loading state, filter, render kartu, modal universal, dan simulasi pengiriman pesanan. `index.html` menyediakan struktur halaman dan elemen dasar UI. Dibanding Minggu 3 yang menanam data proyek dan detailnya langsung di HTML, susunan ini mengurangi duplikasi, memudahkan pemeliharaan, dan memisahkan tanggung jawab tiap lapisan tanpa mengklaim adanya backend.
+
+### Hasil Profiling DevTools
+
+| Metrik | Cold Load | Warm Load |
+|---|---|---|
+| Time to First Byte (TTFB) | [isi] | [isi] |
+| Jumlah Request | [isi] | [isi] |
+| Total Transfer Size | [isi] | [isi] |
+| Status Cache (ada 304 atau tidak) | [isi] | [isi] |
+
+### Sebelum vs Sesudah Refactoring (Minggu 3 → Minggu 4)
+
+| Aspek | Sebelum | Sesudah |
+|---|---|---|
+| Sumber data | [isi] | [isi] |
+| Cara render kartu | [isi] | [isi] |
+| Jumlah elemen modal | [isi] | [isi] |
+| Cara submit form | [isi] | [isi] |
+| Penyimpanan riwayat pesanan | [isi] | [isi] |
 
 ## Sebelum vs Sesudah Integrasi Framework (Minggu 2 → Minggu 3)
 
@@ -69,7 +118,7 @@ Pada Minggu 3, proyek ini **direfaktor dari HTML5 + CSS murni (Minggu 2) menjadi
 
 ## Branch
 
-`week3-bootstrap` — refactor Minggu 3, melanjutkan repositori Minggu 2 (`main`).
+`week4-architecture` — refactor arsitektural Minggu 4, melanjutkan repositori Minggu 3 (`week3-bootstrap`).
 
 ## Live Demo (GitHub Pages)
 https://ventyolanapitupulu.github.io/ppw-2026-week2-12S24042
@@ -81,6 +130,13 @@ https://ventyolanapitupulu.github.io/ppw-2026-week2-12S24042
 ├── index.html
 ├── style.css
 ├── README.md
+├── data/
+│   ├── projects.json
+│   ├── services.json
+│   └── profile.json
+├── js/
+│   ├── api-service.js
+│   └── app.js
 └── assets/
     └── img/
         ├── foto-ventyola.jpg
