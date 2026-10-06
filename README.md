@@ -9,18 +9,23 @@
 
 Website portofolio single page untuk Ventyola Rohati Napitupulu, mahasiswa Sistem Informasi Institut Teknologi Del. Situs ini menampilkan profil personal, pengalaman organisasi dan praktik, studi kasus karya, serta formulir layanan dengan konsep visual yang playful dan personal (tema "paper & sticker").
 
-Pada Minggu 3, proyek ini **direfaktor dari HTML5 + CSS murni (Minggu 2) menjadi berbasis Bootstrap 5.3**, dipadukan dengan Custom CSS Overrides — tanpa menghilangkan identitas visual yang sudah dibangun sebelumnya.
+Pada Minggu 3, proyek ini direfaktor dari HTML5 + CSS murni (Minggu 2) menjadi berbasis Bootstrap 5.3, dipadukan dengan Custom CSS Overrides — tanpa menghilangkan identitas visual yang sudah dibangun sebelumnya.
+
+Pada Minggu 4, proyek ini ditransformasikan dari arsitektur monolitik statis (data tertanam di HTML) menjadi arsitektur decoupled multi-tier dengan Dynamic Client-Side Rendering (CSR): seluruh konten dimuat secara asinkron dari sumber data JSON modular, memakai satu komponen modal universal, dan formulir layanan dikirim secara asinkron tanpa reload halaman.
 
 ## Daftar Fitur
 
 - Layout single page dengan navigasi anchor ke section utama
 - Navbar responsif dengan tombol hamburger (Bootstrap collapse) untuk layar ponsel
 - Hero dengan badge, headline khas, dan elemen dekoratif SVG
-- Section Tentang Saya: bio, peran, keahlian, alur kerja, dan prestasi
-- Section Portofolio Karya: data kartu dan detail dimuat dari JSON, disaring di sisi klien, dan ditampilkan dalam satu modal universal
-- Formulir layanan Bootstrap: Floating Labels, validasi visual, simulasi pengiriman pesanan, toast, dan riwayat pesanan di `localStorage`
+- Section Tentang Saya: bio, peran, keahlian, alur kerja, dan prestasi — dimuat dinamis dari `profile.json`
+- Section Portofolio Karya: data kartu dimuat dari `projects.json`, disaring di sisi klien, dan ditampilkan dalam satu modal universal
+- Katalog layanan (`services.json`) dimuat dinamis ke dropdown formulir, lengkap dengan detail fitur dan tarif per layanan
+- Formulir layanan Bootstrap: Floating Labels, validasi visual, pengiriman asinkron (fetch POST), toast, dan riwayat pesanan di `localStorage`
+- Empat UI States dikelola untuk data proyek dan profil: Loading (skeleton), Success, Empty, dan Error dengan tombol "Coba lagi"
 - Tabel rekap karya dan pengalaman
 - Sticky note kontak cepat di samping formulir
+- Content Security Policy (CSP) sebagai lapis pertama pertahanan terhadap DOM-based XSS
 
 ## Teknologi
 
@@ -28,8 +33,8 @@ Pada Minggu 3, proyek ini **direfaktor dari HTML5 + CSS murni (Minggu 2) menjadi
 - CSS3 (24 custom properties di `:root`, dimuat setelah Bootstrap agar override konsisten tanpa `!important`)
 - Bootstrap 5.3.8 (CDN) + Bootstrap Icons 1.11.3
 - JavaScript bawaan Bootstrap (collapse, modal) + skrip validasi form standar Bootstrap
-- JavaScript Data Access Layer (`js/api-service.js`) dan Presentation Layer (`js/app.js`)
-- JSON statis (`data/`) sebagai sumber data; tidak ada backend atau database sungguhan
+- JavaScript ES6+ (async/await, Fetch API) — Data Access Layer (`js/api-service.js`) dan Presentation Layer (`js/app.js`)
+- JSON statis (`data/`) sebagai decoupled mock data provider; tidak ada backend atau database sungguhan
 - Google Fonts: Bricolage Grotesque, DM Sans, Caveat
 
 ## Arsitektur Minggu 4
@@ -44,40 +49,49 @@ C4Container
     Container(browser, "Browser", "Client / Presentation Tier", "Merender index.html dan js/app.js; js/api-service.js mengambil data dan mengelola simulasi pesanan.")
     System_Ext(pages, "GitHub Pages", "Static CDN Hosting", "Menyajikan file situs sebagai konten statis; tidak menjalankan backend.")
     Container(json, "File JSON di /data", "JSON statis", "projects.json, services.json, profile.json; berperan sebagai simulasi JSON Provider/mock REST API, bukan server API sungguhan.")
+    System_Ext(mockapi, "jsonplaceholder.typicode.com", "Mock REST API Publik", "Menerima simulasi POST formulir layanan; tidak menyimpan data secara permanen.")
 
     Rel(user, browser, "Membuka halaman dan berinteraksi")
     Rel(browser, pages, "Meminta index.html, CSS, dan JavaScript melalui HTTPS")
     Rel(browser, json, "GET /data/projects.json, /data/services.json, /data/profile.json melalui GitHub Pages")
     Rel(pages, json, "Menyajikan berkas JSON yang di-host secara statis")
     Rel(json, browser, "Mengembalikan data JSON statis")
+    Rel(browser, mockapi, "POST payload formulir layanan (simulasi, tanpa reload halaman)")
 ```
 
-Diagram ini menggambarkan hosting statis, bukan layanan backend: browser mengambil file JSON yang di-host sebagai aset melalui GitHub Pages. Pengiriman formulir layanan juga hanya simulasi di browser; riwayatnya disimpan di `localStorage`, bukan dikirim ke server atau database.
+Diagram ini menggambarkan hosting statis, bukan layanan backend: browser mengambil file JSON yang di-host sebagai aset melalui GitHub Pages. Pengiriman formulir layanan disimulasikan lewat `fetch POST` ke layanan mock publik (`jsonplaceholder.typicode.com`), yang membalas sukses tanpa benar-benar menyimpan data; riwayat pesanan yang terlihat di UI tetap disimpan di `localStorage` browser, bukan di database.
 
 ### Separation of Concerns
 
 Pada Minggu 4, data proyek, layanan, dan profil ditempatkan terpisah dalam file JSON di `data/`. File-file ini menjadi sumber data statis yang dapat dibaca browser, bukan database dan bukan API backend sungguhan. Pemisahan ini membuat pembaruan konten lebih terarah: isi data dapat diubah tanpa mencari dan mengedit markup kartu atau modal satu per satu.
 
-Logika akses data dipusatkan di `js/api-service.js`, sedangkan `js/app.js` menangani presentasi dan interaksi seperti loading state, filter, render kartu, modal universal, dan simulasi pengiriman pesanan. `index.html` menyediakan struktur halaman dan elemen dasar UI. Dibanding Minggu 3 yang menanam data proyek dan detailnya langsung di HTML, susunan ini mengurangi duplikasi, memudahkan pemeliharaan, dan memisahkan tanggung jawab tiap lapisan tanpa mengklaim adanya backend.
+Logika akses data dipusatkan di `js/api-service.js`, sedangkan `js/app.js` menangani presentasi dan interaksi seperti loading state, filter, render kartu, modal universal, dan pengiriman pesanan asinkron. `index.html` menyediakan struktur halaman dan elemen dasar UI. Dibanding Minggu 3 yang menanam data proyek dan detailnya langsung di HTML, susunan ini mengurangi duplikasi, memudahkan pemeliharaan, dan memisahkan tanggung jawab tiap lapisan tanpa mengklaim adanya backend.
+
+Keamanan sisi klien diterapkan berlapis: setiap data dinamis yang disisipkan ke DOM melewati fungsi `escapeHTML()` untuk mencegah DOM-based XSS, tautan eksternal divalidasi protokolnya (`http`/`https` saja) sebelum dipasang ke atribut `href`, dan Content Security Policy pada `<meta>` tag membatasi sumber skrip, gaya, font, dan koneksi jaringan yang diizinkan dimuat oleh halaman.
 
 ### Hasil Profiling DevTools
-
 | Metrik | Cold Load | Warm Load |
 |---|---|---|
-| Time to First Byte (TTFB) | [isi] | [isi] |
-| Jumlah Request | [isi] | [isi] |
-| Total Transfer Size | [isi] | [isi] |
-| Status Cache (ada 304 atau tidak) | [isi] | [isi] |
+| Time to First Byte (TTFB) | 310.26 ms | (Memory Cache / ~0 ms) |
+| Jumlah Request | 15 requests | 15 requests |
+| Total Transfer Size | 2.3 MB transferred | ~0 B (diambil dari cache) |
+| Status Cache (ada 304 atau tidak) | Tidak ada (status 200 OK) | Ada (di-serve dari `memory cache` / `disk cache`) |
+**Screenshot Waterfall:**
+
+![Waterfall Cold Load](assets/img/devtools-cold-load.jpeg)
+![Waterfall Warm Load](assets/img/devtools-warm-load.jpeg)
 
 ### Sebelum vs Sesudah Refactoring (Minggu 3 → Minggu 4)
 
-| Aspek | Sebelum | Sesudah |
+| Aspek | Sebelum (Minggu 3) | Sesudah (Minggu 4) |
 |---|---|---|
-| Sumber data | [isi] | [isi] |
-| Cara render kartu | [isi] | [isi] |
-| Jumlah elemen modal | [isi] | [isi] |
-| Cara submit form | [isi] | [isi] |
-| Penyimpanan riwayat pesanan | [isi] | [isi] |
+| Sumber data | Data proyek ditulis statis (hardcoded) langsung sebagai markup kartu di `index.html` | Data dipindah ke `data/projects.json`, `services.json`, `profile.json`; dimuat lewat `fetch()` dengan `async/await` |
+| Cara render kartu | Kartu dan konten ditulis manual satu per satu di HTML | Dirender dinamis oleh `app.js` dari data JSON (template string + `innerHTML` yang di-escape lewat `escapeHTML()`) |
+| Jumlah elemen modal | 4 modal terpisah, satu per proyek (duplikasi markup) | 1 modal universal (`#universalProjectModal`), isi diinjeksi dinamis berdasarkan `data-project-id` |
+| Cara submit form | Form `method="get" action="#"`, submit tanpa penanganan asinkron eksplisit | `fetch POST` asinkron ke endpoint mock, `preventDefault()` mencegah reload, umpan balik via Toast |
+| Penyimpanan riwayat pesanan | Tidak ada — data hilang begitu form dikirim/direset | Disimpan ke `localStorage` (key `serviceOrders`), ditampilkan sebagai badge jumlah pesanan yang reaktif |
+
+> **Catatan:** Baris "Jumlah elemen modal" dan "Cara submit form" disusun berdasarkan rencana refactor Minggu 4; verifikasi kembali terhadap kode aktual di branch `week3-bootstrap` sebelum dikumpulkan, untuk memastikan deskripsi "Sebelum" benar-benar mencerminkan kondisi branch tersebut.
 
 ## Sebelum vs Sesudah Integrasi Framework (Minggu 2 → Minggu 3)
 
@@ -114,6 +128,7 @@ Logika akses data dipusatkan di `js/api-service.js`, sedangkan `js/app.js` menan
 
 1. Buka folder proyek ini di VS Code.
 2. Jalankan ekstensi **Live Server** pada `index.html`, atau buka file tersebut langsung di browser.
+   - Membuka `index.html` langsung lewat `file://` (klik dua kali) **tidak akan memuat data JSON**, karena `fetch()` ke file lokal diblokir kebijakan CORS browser. Wajib pakai Live Server atau server lokal lain.
 3. Tidak ada instalasi tambahan — Bootstrap dan Bootstrap Icons dimuat lewat CDN, jadi memerlukan koneksi internet saat pertama kali membuka halaman.
 
 ## Branch
@@ -128,8 +143,9 @@ https://ventyolanapitupulu.github.io/ppw-2026-week2-12S24042
 ```text
 .
 ├── index.html
-├── style.css
 ├── README.md
+├── css/
+│   └── custom-style.css
 ├── data/
 │   ├── projects.json
 │   ├── services.json
@@ -139,15 +155,15 @@ https://ventyolanapitupulu.github.io/ppw-2026-week2-12S24042
 │   └── app.js
 └── assets/
     └── img/
-        ├── foto-ventyola.jpg
-        ├── imuniku.jpg
-        ├── triporia.jpg
-        ├── tobaverse.jpg
-        ├── infografis-kopi.jpg
-        ├── screenshot-sebelum1.png
-        ├── screenshot-sebelum2.png
-        ├── screenshot-sesudah1.png
-        └── screenshot-sesudah2.png
-        
-        
+        ├── foto-ventyola.jpeg
+        ├── imuniku.jpeg
+        ├── triporia.jpeg
+        ├── tobaverse.jpeg
+        ├── infografis-kopi.jpeg
+        ├── screenshot-sebelum1.jpeg
+        ├── screenshot-sebelum2.jpeg
+        ├── screenshot-sesudah1.jpeg
+        ├── screenshot-sesudah2.jpeg
+        ├── devtools-cold-load.png
+        └── devtools-warm-load.png
 ```

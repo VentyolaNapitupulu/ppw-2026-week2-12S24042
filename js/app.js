@@ -2,6 +2,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const grid = document.querySelector('#portfolio-grid');
   const filters = document.querySelector('#portfolio-filters');
   const serviceForm = document.querySelector('.needs-validation');
+  const profileContent = document.querySelector('#profile-content');
+  const serviceSelect = document.querySelector('#jenis-layanan');
+  const serviceCatalogStatus = document.querySelector('#service-catalog-status');
+  const serviceDetails = document.querySelector('#service-details');
   const orderCountBadge = document.querySelector('#orderCountBadge');
   const orderToast = document.querySelector('#serviceOrderToast');
   const orderToastMessage = document.querySelector('#serviceOrderToastMessage');
@@ -11,6 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let isLoading = false;
   let hasLoadedData = false;
   let isSubmittingOrder = false;
+  let services = [];
 
   if (!grid || !filters) {
     console.error('Elemen grid atau filter portofolio tidak ditemukan.');
@@ -141,6 +146,175 @@ document.addEventListener('DOMContentLoaded', () => {
         </article>
       </div>
     `).join('');
+  }
+
+  function renderProfileLoadingState() {
+    profileContent.setAttribute('aria-busy', 'true');
+    profileContent.innerHTML = `
+      <div class="about-grid placeholder-glow" aria-hidden="true">
+        <div class="about-copy">
+          <span class="placeholder col-12 mb-3"></span>
+          <span class="placeholder col-10 mb-3"></span>
+          <span class="placeholder col-11"></span>
+        </div>
+        <div>
+          <span class="placeholder col-12 mb-3"></span>
+          <span class="placeholder col-10 mb-3"></span>
+          <span class="placeholder col-11"></span>
+        </div>
+      </div>
+    `;
+  }
+
+  function renderProfile(profile) {
+    if (!profile || !Array.isArray(profile.bio) || !Array.isArray(profile.roles)
+      || !Array.isArray(profile.skills) || !Array.isArray(profile.workflow)
+      || !Array.isArray(profile.achievements)) {
+      throw new Error('Struktur data profil tidak valid.');
+    }
+
+    profileContent.setAttribute('aria-busy', 'false');
+    profileContent.innerHTML = `
+      <div class="about-grid">
+        <div class="about-copy">
+          ${profile.bio.map((paragraph) => `<p>${escapeHTML(paragraph)}</p>`).join('')}
+        </div>
+        <dl class="role-list">
+          <dt>Peran</dt>
+          ${profile.roles.map((role) => `
+            <dd>
+              <strong>${escapeHTML(role.title)}</strong>
+              ${role.period ? `<span>${escapeHTML(role.period)}</span>` : ''}
+              ${role.description ? `<span>${escapeHTML(role.description)}</span>` : ''}
+            </dd>
+          `).join('')}
+        </dl>
+      </div>
+
+      <div class="skills-panel">
+        <h3>Keahlian</h3>
+        <ul class="skill-list">
+          ${profile.skills.map((skill) => `<li>${escapeHTML(skill)}</li>`).join('')}
+        </ul>
+      </div>
+
+      <div class="workflow-panel">
+        <h3>Alur kerja</h3>
+        <ol>
+          ${profile.workflow.map((step) => `<li>${escapeHTML(step)}</li>`).join('')}
+        </ol>
+      </div>
+
+      <div class="achievement-panel">
+        <h3>Prestasi</h3>
+        <dl class="achievement-list">
+          ${profile.achievements.map((achievement) => `
+            <div>
+              <dt>${escapeHTML(achievement.title)}</dt>
+              <dd>${escapeHTML(achievement.description)}</dd>
+            </div>
+          `).join('')}
+        </dl>
+      </div>
+    `;
+  }
+
+  function renderProfileError(error) {
+    const message = error instanceof Error
+      ? error.message
+      : 'Terjadi kesalahan yang tidak diketahui.';
+
+    profileContent.setAttribute('aria-busy', 'false');
+    profileContent.innerHTML = `
+      <div class="alert alert-danger" role="alert">
+        <p class="mb-3">Profil gagal dimuat. ${escapeHTML(message)}</p>
+        <button class="btn button button-primary" type="button" data-profile-retry>
+          Coba lagi
+        </button>
+      </div>
+    `;
+  }
+
+  async function loadProfile() {
+    renderProfileLoadingState();
+
+    try {
+      const profile = await fetchProfile();
+      renderProfile(profile);
+    } catch (error) {
+      console.error('Gagal memuat profil:', error);
+      renderProfileError(error);
+    }
+  }
+
+  function renderServiceDetails(service) {
+    if (!serviceDetails) {
+      return;
+    }
+
+    if (!service) {
+      serviceDetails.innerHTML = '';
+      return;
+    }
+
+    serviceDetails.innerHTML = `
+      <div class="alert alert-light mb-0">
+        <p>${escapeHTML(service.description)}</p>
+        <strong>Fitur</strong>
+        <ul class="mb-2">
+          ${service.features.map((feature) => `<li>${escapeHTML(feature)}</li>`).join('')}
+        </ul>
+        <p class="mb-0"><strong>Tarif:</strong> ${escapeHTML(service.price)}</p>
+      </div>
+    `;
+  }
+
+  async function loadServices() {
+    if (!serviceSelect || !serviceCatalogStatus) {
+      console.error('Elemen katalog layanan tidak ditemukan.');
+      return;
+    }
+
+    serviceSelect.disabled = true;
+    serviceCatalogStatus.innerHTML = '<p class="text-muted" role="status">Memuat katalog layanan...</p>';
+    renderServiceDetails(null);
+
+    try {
+      const loadedServices = await fetchServices();
+      if (!Array.isArray(loadedServices)
+        || loadedServices.some((service) => !service
+          || typeof service.name !== 'string'
+          || typeof service.description !== 'string'
+          || typeof service.price !== 'string'
+          || !Array.isArray(service.features)
+          || service.features.some((feature) => typeof feature !== 'string'))) {
+        throw new Error('Struktur data layanan tidak valid.');
+      }
+
+      services = loadedServices;
+      serviceSelect.innerHTML = `
+        <option value="">Pilih layanan</option>
+        ${services.map((service) => `
+          <option value="${escapeHTML(service.name)}">${escapeHTML(service.name)}</option>
+        `).join('')}
+      `;
+      serviceSelect.disabled = false;
+      serviceCatalogStatus.innerHTML = '';
+    } catch (error) {
+      console.error('Gagal memuat katalog layanan:', error);
+      const message = error instanceof Error
+        ? error.message
+        : 'Terjadi kesalahan yang tidak diketahui.';
+      serviceSelect.innerHTML = '<option value="">Pilih layanan</option>';
+      serviceCatalogStatus.innerHTML = `
+        <div class="alert alert-danger mt-2" role="alert">
+          <p class="mb-2">Layanan gagal dimuat. ${escapeHTML(message)}</p>
+          <button class="btn button button-primary" type="button" data-service-retry>
+            Coba lagi
+          </button>
+        </div>
+      `;
+    }
   }
 
   function renderFilters() {
@@ -358,5 +532,30 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     loadProjects();
+  }
+
+  if (profileContent) {
+    profileContent.addEventListener('click', (event) => {
+      if (event.target.closest('[data-profile-retry]')) {
+        loadProfile();
+      }
+    });
+    loadProfile();
+  } else {
+    console.error('Elemen #profile-content tidak ditemukan.');
+  }
+
+  if (serviceSelect && serviceCatalogStatus) {
+    serviceSelect.addEventListener('change', () => {
+      const selectedService = services.find((service) => service.name === serviceSelect.value);
+      renderServiceDetails(selectedService);
+    });
+
+    serviceCatalogStatus.addEventListener('click', (event) => {
+      if (event.target.closest('[data-service-retry]')) {
+        loadServices();
+      }
+    });
+    loadServices();
   }
 });

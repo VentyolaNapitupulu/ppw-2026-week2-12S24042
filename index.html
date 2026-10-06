@@ -7,6 +7,10 @@
       name="description"
       content="Portofolio single page Ventyola Rohati Napitupulu, mahasiswa Sistem Informasi Institut Teknologi Del."
     />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com https://cdn.jsdelivr.net; img-src 'self' data:; connect-src 'self' https://jsonplaceholder.typicode.com"
+    />
     <title>Ventyola | Portofolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -125,99 +129,19 @@
             <h2 id="about-title">Membuat sistem rumit terasa mudah dipakai.</h2>
           </div>
 
-          <div class="about-grid">
-            <div class="about-copy">
-              <p>
-                Aku Ventyola Rohati Napitupulu, mahasiswa Sistem Informasi Institut Teknologi Del di Balige, Sumatera Utara. 
-                Aku tertarik pada bagaimana teknologi, data, dan manusia saling berinteraksi — terutama ketika sesuatu yang kompleks harus dibuat 
-                lebih sederhana untuk digunakan.
-              </p>
-              <p>
-                Aku senang memahami masalah dari sisi penggunanya, menguji asumsi lewat feedback nyata, lalu menerjemahkannya menjadi solusi yang lebih jelas dan mudah digunakan. 
-                Dalam prosesnya, aku bekerja di antara UI/UX, pengembangan sistem, data, dan AI, dengan fokus pada bagaimana teknologi bisa benar-benar membantu menyelesaikan masalah.
-              </p>
-              <p>
-                Bagiku, teknologi yang baik bukan hanya tentang bagaimana sistem itu bekerja, tetapi juga <b>tentang seberapa mudah orang memahaminya dan menggunakannya.</b>
-              </p>
+          <div id="profile-content" aria-live="polite" aria-busy="true">
+            <div class="about-grid placeholder-glow" aria-hidden="true">
+              <div class="about-copy">
+                <span class="placeholder col-12 mb-3"></span>
+                <span class="placeholder col-10 mb-3"></span>
+                <span class="placeholder col-11"></span>
+              </div>
+              <div>
+                <span class="placeholder col-12 mb-3"></span>
+                <span class="placeholder col-10 mb-3"></span>
+                <span class="placeholder col-11"></span>
+              </div>
             </div>
-
-            <dl class="role-list">
-              <dt>Peran</dt>
-              <dd>
-                <strong>Google Student Ambassador</strong>
-                <span>Apr 2026-sekarang</span>
-                <span>2 sesi offline, 18 peserta; memperkenalkan Gemini dan alat Google; konten mingguan.</span>
-              </dd>
-              <dd>
-                <strong>Agen Statistik</strong>
-                <span>Pojok Statistik IT Del x BPS Toba, Mar 2026-sekarang</span>
-                <span>Mengubah data BPS menjadi infografis dan video untuk publik.</span>
-              </dd>
-              <dd>
-                <strong>DIPTEK BEM-IT DEL</strong>
-                <span>Departemen Sains &amp; Teknologi BEM IT Del, Jan 2026-sekarang</span>
-                <span>Poster, video, dan Instagram departemen untuk PKM dan GEMASTIK.</span>
-              </dd>
-              <dd>
-                <strong>Asisten Dosen</strong>
-                <span>Basis Data (Jan-Mei 2026, 50+ mahasiswa) dan Matematika Diskrit (Sep-Des 2025, 50+ mahasiswa)</span>
-              </dd>
-            </dl>
-          </div>
-
-          <div class="skills-panel">
-            <h3>Keahlian</h3>
-            <ul class="skill-list">
-              <li>Product &amp; Design</li>
-              <li>UI/UX Design</li>
-              <li>Figma</li>
-              <li>Wireframing</li>
-              <li>Prototyping</li>
-              <li>Usability Testing (Maze)</li>
-              <li>Draw.io</li>
-              <li>Sistem &amp; Analisis</li>
-              <li>BPMN</li>
-              <li>Requirement Analysis</li>
-              <li>SRS</li>
-              <li>DFD</li>
-              <li>ERD</li>
-              <li>MySQL</li>
-              <li>Pemrograman</li>
-              <li>C</li>
-              <li>Java (OOP)</li>
-              <li>Web Development</li>
-              <li>Indonesia (fasih)</li>
-              <li>Inggris (menengah)</li>
-            </ul>
-          </div>
-
-          <div class="workflow-panel">
-            <h3>Alur kerja</h3>
-            <ol>
-              <li>Riset lapangan (observasi, wawancara, survei)</li>
-              <li>Sintesis (affinity map, empathy map, persona, HMW)</li>
-              <li>Rancang (information architecture, user flow, wireframe sampai hi-fi Figma)</li>
-              <li>Uji (usability test remote lewat Maze)</li>
-              <li>Iterasi berdasarkan bukti</li>
-            </ol>
-          </div>
-
-          <div class="achievement-panel">
-            <h3>Prestasi</h3>
-            <dl class="achievement-list">
-              <div>
-                <dt>Juara 2 Kompetisi UI/UX HIMIVERSE 2.0 UNSURYA</dt>
-                <dd>TemanImun-Aplikasi Pendamping Imunisasi Anak Indonesia (Kompetisi Nasional)</dd>
-              </div>
-              <div>
-                <dt>Outstanding Student</dt>
-                <dd>Mahasiswa Berprestasi Program Studi Sistem Informasi, Institut Teknologi Del (2026)</dd>
-              </div>
-              <div>
-                <dt>Penerima Beasiswa</dt>
-                <dd>Penerima beasiswa PANDI (Pengelola Nama Domain Internet Indonesia); Penerima Beasiswa Prestasi Institut Teknologi Del</dd>
-              </div>
-            </dl>
           </div>
         </div>
       </section>
@@ -373,14 +297,11 @@
                     <div class="form-floating">
                       <select class="form-select" id="jenis-layanan" name="jenis-layanan" required aria-describedby="layanan-help layanan-invalid layanan-valid">
                         <option value="">Pilih layanan</option>
-                        <option>Konsultasi UI/UX dan usability testing</option>
-                        <option>Desain infografis dari data</option>
-                        <option>Workshop literasi digital &amp; AI (Gemini)</option>
-                        <option>Mentoring Basis Data &amp; SQL</option>
-                        <option>Workshop berpikir komputasional untuk anak SD</option>
                       </select>
                       <label for="jenis-layanan">Jenis layanan</label>
                     </div>
+                    <div id="service-catalog-status" aria-live="polite"></div>
+                    <div id="service-details" class="mt-3" aria-live="polite"></div>
                     <small id="layanan-help">Pilih yang paling sesuai dengan kebutuhanmu.</small>
                     <div class="invalid-feedback" id="layanan-invalid">Pilih jenis layanan.</div>
                     <div class="valid-feedback" id="layanan-valid">Jenis layanan sudah dipilih.</div>
