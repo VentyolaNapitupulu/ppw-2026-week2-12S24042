@@ -1,0 +1,116 @@
+[
+  {
+    "id": "imuniku",
+    "title": "ImuniKu",
+    "category": "UI/UX",
+    "badgeLabel": "UI/UX · 2026",
+    "thumbnail": "assets/img/imuniku.jpg",
+    "thumbnailAlt": "Tampilan aplikasi ImuniKu dengan fokus pada jadwal imunisasi",
+    "shortDescription": "Aplikasi mobile pendamping imunisasi anak, dengan celah cakupan imunisasi anak Indonesia yang masih rendah: 35,8%.",
+    "cardActionLabel": "Lihat detail",
+    "modalMeta": "UI/UX · 2026 · ImuniKu",
+    "fullDescription": [
+      "Aplikasi mobile pendamping imunisasi anak, dengan celah cakupan imunisasi anak Indonesia yang masih rendah: 35,8%. Aku menelusuri problem yang terjadi di lapangan melalui observasi di Kabupaten Toba, wawancara 7 ibu, dan survei 20 orang tua.",
+      "Masalah dibingkai ulang dari \"mencatat imunisasi\" menjadi \"mendukung keputusan di tengah ketidakpastian\". Solusinya adalah penjelasan vaksin di kartu jadwal, notifikasi yang lebih fleksibel, serta mode panduan 48 jam pasca-imunisasi.",
+      "Prototype Figma lebih dari 25 layar dan usability test Maze pada 13 partisipan membantu menilai keterbacaan, tingkat error, dan tingkat drop-off saat registrasi. Hasilnya memberi arah perbaikan yang konkret."
+    ],
+    "links": [
+      {
+        "label": "Lihat proyek ImuniKu",
+        "url": "https://bit.ly/ImunikuAppProject"
+      }
+    ],
+    "metrics": {
+      "cakupanImunisasiAnakIndonesia": "35,8%",
+      "wawancara": "7 ibu",
+      "survei": "20 orang tua",
+      "prototype": "lebih dari 25 layar",
+      "usabilityTest": "13 partisipan"
+    }
+  },
+  {
+    "id": "triporia",
+    "title": "Triporia",
+    "category": "Technopreneurship",
+    "badgeLabel": "Technopreneurship · 2025",
+    "thumbnail": "assets/img/triporia.jpg",
+    "thumbnailAlt": "Tampilan platform Triporia untuk wisata Samosir dan Danau Toba",
+    "shortDescription": "Platform wisata Samosir dan Danau Toba dengan tim 5 orang, di mana peranku sebagai UI/UX Designer.",
+    "cardActionLabel": "Lihat detail",
+    "modalMeta": "Technopreneurship · 2025 · Triporia",
+    "fullDescription": [
+      "Platform wisata Samosir dan Danau Toba dengan tim 5 orang, di mana peranku sebagai UI/UX Designer. Temuan lapangan menunjukkan hambatan utama bukan pada harga, tetapi pada kepercayaan.",
+      "Aku menyusun alur transportasi, pemandu, dan akomodasi dalam satu pengalaman yang lebih jelas, dilengkapi badge terverifikasi, rating, review, transparansi harga, dashboard admin, dan identitas visual merah-hitam ulos untuk membangun rasa aman dan familiar.",
+      "Prototipe lebih dari 25 layar dibuat agar perjalanan pengguna terasa utuh, mulai dari discovery hingga booking. Solusi ini menekankan pengalaman yang meyakinkan dan dapat dipercaya."
+    ],
+    "links": [
+      {
+        "label": "Lihat proyek Triporia",
+        "url": "https://bit.ly/Triporia-Project"
+      }
+    ],
+    "metrics": {
+      "tim": "5 orang",
+      "prototype": "lebih dari 25 layar"
+    }
+  },
+  {
+    "id": "tobaverse",
+    "title": "TobaVerse",
+    "category": "AI",
+    "badgeLabel": "AI · Hackathon 2026",
+    "thumbnail": "assets/img/tobaverse.jpg",
+    "thumbnailAlt": "Visual TobaVerse dengan tema wisata Danau Toba dan AI assistant",
+    "shortDescription": "Kami membangun asisten perjalanan AI berbasis chatbot RAG dan perencana perjalanan untuk wisata Danau Toba.",
+    "cardActionLabel": "Lihat detail",
+    "modalMeta": "Del AI Hackathon IT Del 2026 · TobaVerse",
+    "fullDescription": [
+      "Tim 3 orang, ini adalah pengalaman pertama ikut hackathon dan berhadapan dengan AI/ML. Kami membangun asisten perjalanan AI berbasis chatbot RAG dan perencana perjalanan untuk wisata Danau Toba.",
+      "Masalah utama adalah rekomendasi sering tidak sesuai kategori, sehingga retrieval dan filtering diperbaiki agar hasil lebih tepat. Identitas visual diangkat dari ulos, gorga, dan palet maroon-emas.",
+      "Kami tidak lolos penyisihan, dan itu memberi pelajaran yang jujur: masuk ke domain baru, bekerja dengan batasan lomba, menguji produk, dan berani iterasi di tengah ketidakpastian."
+    ],
+    "links": [
+      {
+        "label": "Lihat repositori TobaVerse",
+        "url": "https://github.com/VentyolaNapitupulu/tobaverse-ai.git"
+      }
+    ],
+    "metrics": {
+      "tim": "3 orang"
+    }
+  },
+  {
+    "id": "agen-statistik",
+    "title": "Agen Statistik",
+    "category": "Agen Statistik",
+    "badgeLabel": "Agen Statistik · 2026",
+    "thumbnail": "assets/img/infografis-kopi.jpg",
+    "thumbnailAlt": "Infografis Agen Statistik tentang kopi Toba",
+    "shortDescription": "Saya membuat 3 infografis dan 1 video berbasis data BPS dengan fokus pada isu-isu yang hidup di masyarakat.",
+    "cardActionLabel": "Lihat detail",
+    "modalMeta": "Agen Statistik · Mar 2026-sekarang",
+    "fullDescription": [
+      "Saya membuat 3 infografis dan 1 video berbasis data BPS dengan fokus pada isu-isu yang hidup di masyarakat. Salah satunya membahas mengapa lahan bertambah, tetapi nilai di tingkat petani tidak ikut naik.",
+      "Video dan infografis juga menjelaskan jasa menyalip pertanian dalam struktur lapangan kerja Toba, serta kesenjangan akses fasilitas literasi antar-kecamatan. Pekerjaan ini menekankan bagaimana data dapat dibaca sebagai narasi yang jelas dan relevan.",
+      "Proyek ini mendorong saya untuk membangun komunikasi visual yang tidak sekadar cantik, tetapi juga membantu publik mencerna sesuatu yang kompleks dengan lebih mudah."
+    ],
+    "links": [
+      {
+        "label": "Infografis kopi",
+        "url": "https://bit.ly/4wYk9ZW"
+      },
+      {
+        "label": "Infografis jasa",
+        "url": "https://bit.ly/4qUDrOj"
+      },
+      {
+        "label": "Video",
+        "url": "https://www.instagram.com/reel/DavBvzLyeMy/"
+      }
+    ],
+    "metrics": {
+      "infografis": "3 infografis",
+      "video": "1 video"
+    }
+  }
+]

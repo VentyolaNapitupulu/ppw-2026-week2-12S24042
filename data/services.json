@@ -1,0 +1,27 @@
+[
+  {
+    "id": "konsultasi-ui-ux",
+    "name": "Konsultasi UI/UX dan usability testing",
+    "description": "Konsultasi UI/UX dan usability testing"
+  },
+  {
+    "id": "desain-infografis",
+    "name": "Desain infografis dari data",
+    "description": "Desain infografis dari data"
+  },
+  {
+    "id": "workshop-literasi-digital-ai",
+    "name": "Workshop literasi digital & AI (Gemini)",
+    "description": "Workshop literasi digital & AI (Gemini)"
+  },
+  {
+    "id": "mentoring-basis-data-sql",
+    "name": "Mentoring Basis Data & SQL",
+    "description": "Mentoring Basis Data & SQL"
+  },
+  {
+    "id": "workshop-berpikir-komputasional",
+    "name": "Workshop berpikir komputasional untuk anak SD",
+    "description": "Workshop berpikir komputasional untuk anak SD"
+  }
+]
