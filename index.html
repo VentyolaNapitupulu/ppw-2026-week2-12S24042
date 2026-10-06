@@ -19,7 +19,7 @@
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <!-- CSS Kustom -->
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/custom-style.css" />
   </head>
   <body>
     <a class="skip-link" href="#main-content">Lewati ke konten utama</a>
@@ -230,51 +230,8 @@
             <h2 id="portfolio-title">Karya yang tumbuh dari kebutuhan nyata.</h2>
           </div>
 
-          <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 portfolio-grid">
-            <div class="col">
-              <article class="card portfolio-card h-100" aria-labelledby="case-imuniku-title">
-                <img class="card-img-top" src="assets/img/imuniku.jpg" alt="Tampilan aplikasi ImuniKu dengan fokus pada jadwal imunisasi" width="720" height="520" />
-                <div class="card-body">
-                  <span class="portfolio-badge">UI/UX · 2026</span>
-                  <h3 class="card-title" id="case-imuniku-title">ImuniKu</h3>
-                  <p class="card-text">Aplikasi mobile pendamping imunisasi anak, dengan celah cakupan imunisasi anak Indonesia yang masih rendah: 35,8%.</p>
-                  <button class="btn button button-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-imuniku">Lihat detail</button>
-                </div>
-              </article>
-            </div>
-            <div class="col">
-              <article class="card portfolio-card h-100" aria-labelledby="case-triporia-title">
-                <img class="card-img-top" src="assets/img/triporia.jpg" alt="Tampilan platform Triporia untuk wisata Samosir dan Danau Toba" width="720" height="520" />
-                <div class="card-body">
-                  <span class="portfolio-badge badge-sky">Technopreneurship · 2025</span>
-                  <h3 class="card-title" id="case-triporia-title">Triporia</h3>
-                  <p class="card-text">Platform wisata Samosir dan Danau Toba dengan tim 5 orang, di mana peranku sebagai UI/UX Designer.</p>
-                  <button class="btn button button-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-triporia">Lihat detail</button>
-                </div>
-              </article>
-            </div>
-            <div class="col">
-              <article class="card portfolio-card h-100" aria-labelledby="case-tobaverse-title">
-                <img class="card-img-top" src="assets/img/tobaverse.jpg" alt="Visual TobaVerse dengan tema wisata Danau Toba dan AI assistant" width="720" height="520" />
-                <div class="card-body">
-                  <span class="portfolio-badge badge-rose">AI · Hackathon 2026</span>
-                  <h3 class="card-title" id="case-tobaverse-title">TobaVerse</h3>
-                  <p class="card-text">Kami membangun asisten perjalanan AI berbasis chatbot RAG dan perencana perjalanan untuk wisata Danau Toba.</p>
-                  <button class="btn button button-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-tobaverse">Lihat detail</button>
-                </div>
-              </article>
-            </div>
-            <div class="col">
-              <article class="card portfolio-card h-100" aria-labelledby="case-statistik-title">
-                <img class="card-img-top" src="assets/img/infografis-kopi.jpg" alt="Infografis Agen Statistik tentang kopi Toba" width="720" height="520" />
-                <div class="card-body">
-                  <span class="portfolio-badge badge-mint">Agen Statistik · 2026</span>
-                  <h3 class="card-title" id="case-statistik-title">Agen Statistik</h3>
-                  <p class="card-text">Saya membuat 3 infografis dan 1 video berbasis data BPS dengan fokus pada isu-isu yang hidup di masyarakat.</p>
-                  <button class="btn button button-primary" type="button" data-bs-toggle="modal" data-bs-target="#modal-statistik">Lihat detail</button>
-                </div>
-              </article>
-            </div>
+          <div id="portfolio-filters" class="d-flex flex-wrap gap-2 mb-4" role="group" aria-label="Filter kategori proyek"></div>
+          <div id="portfolio-grid" class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 portfolio-grid">
           </div>
 
           <div class="table-wrap">
@@ -356,12 +313,17 @@
         <div class="container service-layout">
           <div class="form-panel">
             <div class="section-heading form-heading">
-              <p class="eyebrow"><i class="bi bi-chat-left-fill"></i>  Formulir Layanan</p>
+              <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+                <p class="eyebrow mb-0"><i class="bi bi-chat-left-fill"></i>  Formulir Layanan</p>
+                <span class="badge rounded-pill text-bg-secondary">
+                  Pesanan tersimpan: <span id="orderCountBadge">0</span>
+                </span>
+              </div>
               
               <h2 id="layanan-title">Aku siap membantu mewujudkan ide menjadi pengalaman yang jelas.</h2>
             </div>
 
-            <!-- Form ini demo tampilan: belum mengirim pesan. -->
+            <!-- Form ini menyimulasikan pengiriman pesanan; belum terhubung ke backend. -->
             <form class="needs-validation" method="get" action="#" aria-describedby="form-help" novalidate>
               <fieldset>
                 <legend>Tentang Kamu</legend>
@@ -500,78 +462,34 @@
       </section>
     </main>
 
-    <div class="modal fade project-modal" id="modal-imuniku" tabindex="-1" aria-labelledby="modal-imuniku-title" aria-hidden="true">
+    <div class="modal fade project-modal" id="universalProjectModal" tabindex="-1" aria-labelledby="projectModalTitle" aria-hidden="true">
       <div class="modal-dialog modal-lg modal-dialog-scrollable">
         <div class="modal-content">
           <div class="modal-header">
-            <h2 class="modal-title" id="modal-imuniku-title">ImuniKu</h2>
+            <h2 class="modal-title" id="projectModalTitle"></h2>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
           </div>
-          <div class="modal-body">
-            <p class="case-meta">UI/UX · 2026 · ImuniKu</p>
-            <p>Aplikasi mobile pendamping imunisasi anak, dengan celah cakupan imunisasi anak Indonesia yang masih rendah: 35,8%. Aku menelusuri problem yang terjadi di lapangan melalui observasi di Kabupaten Toba, wawancara 7 ibu, dan survei 20 orang tua.</p>
-            <p>Masalah dibingkai ulang dari "mencatat imunisasi" menjadi "mendukung keputusan di tengah ketidakpastian". Solusinya adalah penjelasan vaksin di kartu jadwal, notifikasi yang lebih fleksibel, serta mode panduan 48 jam pasca-imunisasi.</p>
-            <p>Prototype Figma lebih dari 25 layar dan usability test Maze pada 13 partisipan membantu menilai keterbacaan, tingkat error, dan tingkat drop-off saat registrasi. Hasilnya memberi arah perbaikan yang konkret.</p>
-            <a class="btn button button-secondary" href="https://bit.ly/ImunikuAppProject" target="_blank" rel="noreferrer">Lihat proyek ImuniKu</a>
-          </div>
+          <div class="modal-body" id="projectModalBody"></div>
         </div>
       </div>
     </div>
 
-    <div class="modal fade project-modal" id="modal-triporia" tabindex="-1" aria-labelledby="modal-triporia-title" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-scrollable">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2 class="modal-title" id="modal-triporia-title">Triporia</h2>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-          </div>
-          <div class="modal-body">
-            <p class="case-meta">Technopreneurship · 2025 · Triporia</p>
-            <p>Platform wisata Samosir dan Danau Toba dengan tim 5 orang, di mana peranku sebagai UI/UX Designer. Temuan lapangan menunjukkan hambatan utama bukan pada harga, tetapi pada kepercayaan.</p>
-            <p>Aku menyusun alur transportasi, pemandu, dan akomodasi dalam satu pengalaman yang lebih jelas, dilengkapi badge terverifikasi, rating, review, transparansi harga, dashboard admin, dan identitas visual merah-hitam ulos untuk membangun rasa aman dan familiar.</p>
-            <p>Prototipe lebih dari 25 layar dibuat agar perjalanan pengguna terasa utuh, mulai dari discovery hingga booking. Solusi ini menekankan pengalaman yang meyakinkan dan dapat dipercaya.</p>
-            <a class="btn button button-secondary" href="https://bit.ly/Triporia-Project" target="_blank" rel="noreferrer">Lihat proyek Triporia</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade project-modal" id="modal-tobaverse" tabindex="-1" aria-labelledby="modal-tobaverse-title" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-scrollable">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2 class="modal-title" id="modal-tobaverse-title">TobaVerse</h2>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-          </div>
-          <div class="modal-body">
-            <p class="case-meta">Del AI Hackathon IT Del 2026 · TobaVerse</p>
-            <p>Tim 3 orang, ini adalah pengalaman pertama ikut hackathon dan berhadapan dengan AI/ML. Kami membangun asisten perjalanan AI berbasis chatbot RAG dan perencana perjalanan untuk wisata Danau Toba.</p>
-            <p>Masalah utama adalah rekomendasi sering tidak sesuai kategori, sehingga retrieval dan filtering diperbaiki agar hasil lebih tepat. Identitas visual diangkat dari ulos, gorga, dan palet maroon-emas.</p>
-            <p>Kami tidak lolos penyisihan, dan itu memberi pelajaran yang jujur: masuk ke domain baru, bekerja dengan batasan lomba, menguji produk, dan berani iterasi di tengah ketidakpastian.</p>
-            <a class="btn button button-secondary" href="https://github.com/VentyolaNapitupulu/tobaverse-ai.git" target="_blank" rel="noreferrer">Lihat repositori TobaVerse</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade project-modal" id="modal-statistik" tabindex="-1" aria-labelledby="modal-statistik-title" aria-hidden="true">
-      <div class="modal-dialog modal-lg modal-dialog-scrollable">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2 class="modal-title" id="modal-statistik-title">Agen Statistik</h2>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-          </div>
-          <div class="modal-body">
-            <p class="case-meta">Agen Statistik · Mar 2026-sekarang</p>
-            <p>Saya membuat 3 infografis dan 1 video berbasis data BPS dengan fokus pada isu-isu yang hidup di masyarakat. Salah satunya membahas mengapa lahan bertambah, tetapi nilai di tingkat petani tidak ikut naik.</p>
-            <p>Video dan infografis juga menjelaskan jasa menyalip pertanian dalam struktur lapangan kerja Toba, serta kesenjangan akses fasilitas literasi antar-kecamatan. Pekerjaan ini menekankan bagaimana data dapat dibaca sebagai narasi yang jelas dan relevan.</p>
-            <p>Proyek ini mendorong saya untuk membangun komunikasi visual yang tidak sekadar cantik, tetapi juga membantu publik mencerna sesuatu yang kompleks dengan lebih mudah.</p>
-            <div class="case-links">
-              <a class="btn button button-secondary" href="https://bit.ly/4wYk9ZW" target="_blank" rel="noreferrer">Infografis kopi</a>
-              <a class="btn button button-secondary" href="https://bit.ly/4qUDrOj" target="_blank" rel="noreferrer">Infografis jasa</a>
-              <a class="btn button button-secondary" href="https://www.instagram.com/reel/DavBvzLyeMy/" target="_blank" rel="noreferrer">Video</a>
-            </div>
-          </div>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+      <div
+        id="serviceOrderToast"
+        class="toast align-items-center text-bg-success border-0"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        <div class="d-flex">
+          <div class="toast-body" id="serviceOrderToastMessage"></div>
+          <button
+            type="button"
+            class="btn-close btn-close-white me-2 m-auto"
+            data-bs-dismiss="toast"
+            aria-label="Tutup"
+          ></button>
         </div>
       </div>
     </div>
@@ -593,21 +511,7 @@
     </footer>
     <!-- Script JavaScript Bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
-    <script>
-      (() => {
-        const forms = document.querySelectorAll('.needs-validation');
-
-        Array.from(forms).forEach((form) => {
-          form.addEventListener('submit', (event) => {
-            if (!form.checkValidity()) {
-              event.preventDefault();
-              event.stopPropagation();
-            }
-
-            form.classList.add('was-validated');
-          }, false);
-        });
-      })();
-    </script>
+    <script src="js/api-service.js"></script>
+    <script src="js/app.js"></script>
   </body>
 </html>
