@@ -164,6 +164,6 @@ https://ventyolanapitupulu.github.io/ppw-2026-week2-12S24042
         ├── screenshot-sebelum2.jpeg
         ├── screenshot-sesudah1.jpeg
         ├── screenshot-sesudah2.jpeg
-        ├── devtools-cold-load.png
-        └── devtools-warm-load.png
+        ├── devtools-cold-load.jpeg
+        └── devtools-warm-load.jpeg
 ```
