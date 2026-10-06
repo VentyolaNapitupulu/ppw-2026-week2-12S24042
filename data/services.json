@@ -1,0 +1,52 @@
+[
+  {
+    "id": "konsultasi-ui-ux",
+    "name": "Konsultasi UI/UX dan usability testing",
+    "description": "Konsultasi UI/UX dan usability testing",
+    "features": [
+      "Evaluasi alur dan antarmuka",
+      "Rekomendasi perbaikan berdasarkan kebutuhan pengguna"
+    ],
+    "price": "Mulai Rp0 (sukarela)"
+  },
+  {
+    "id": "desain-infografis",
+    "name": "Desain infografis dari data",
+    "description": "Desain infografis dari data",
+    "features": [
+      "Penyusunan narasi dari data",
+      "Desain infografis siap dibagikan"
+    ],
+    "price": "Mulai Rp0 (sukarela)"
+  },
+  {
+    "id": "workshop-literasi-digital-ai",
+    "name": "Workshop literasi digital & AI (Gemini)",
+    "description": "Workshop literasi digital & AI (Gemini)",
+    "features": [
+      "Pengenalan literasi digital dan AI",
+      "Praktik menggunakan Gemini dan alat Google"
+    ],
+    "price": "Mulai Rp0 (sukarela)"
+  },
+  {
+    "id": "mentoring-basis-data-sql",
+    "name": "Mentoring Basis Data & SQL",
+    "description": "Mentoring Basis Data & SQL",
+    "features": [
+      "Pembahasan konsep basis data relasional",
+      "Latihan query SQL dan pemodelan data"
+    ],
+    "price": "Mulai Rp0 (sukarela)"
+  },
+  {
+    "id": "workshop-berpikir-komputasional",
+    "name": "Workshop berpikir komputasional untuk anak SD",
+    "description": "Workshop berpikir komputasional untuk anak SD",
+    "features": [
+      "Aktivitas pemecahan masalah sesuai usia",
+      "Latihan konsep algoritma tanpa perangkat"
+    ],
+    "price": "Mulai Rp0 (sukarela)"
+  }
+]

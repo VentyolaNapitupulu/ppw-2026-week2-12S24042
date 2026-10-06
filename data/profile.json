@@ -1,0 +1,72 @@
+{
+  "name": "Ventyola Rohati Napitupulu",
+  "bio": [
+    "Aku Ventyola Rohati Napitupulu, mahasiswa Sistem Informasi Institut Teknologi Del di Balige, Sumatera Utara. Aku tertarik pada bagaimana teknologi, data, dan manusia saling berinteraksi — terutama ketika sesuatu yang kompleks harus dibuat lebih sederhana untuk digunakan.",
+    "Aku senang memahami masalah dari sisi penggunanya, menguji asumsi lewat feedback nyata, lalu menerjemahkannya menjadi solusi yang lebih jelas dan mudah digunakan. Dalam prosesnya, aku bekerja di antara UI/UX, pengembangan sistem, data, dan AI, dengan fokus pada bagaimana teknologi bisa benar-benar membantu menyelesaikan masalah.",
+    "Bagiku, teknologi yang baik bukan hanya tentang bagaimana sistem itu bekerja, tetapi juga tentang seberapa mudah orang memahaminya dan menggunakannya."
+  ],
+  "roles": [
+    {
+      "title": "Google Student Ambassador",
+      "period": "Apr 2026-sekarang",
+      "description": "2 sesi offline, 18 peserta; memperkenalkan Gemini dan alat Google; konten mingguan."
+    },
+    {
+      "title": "Agen Statistik",
+      "period": "Pojok Statistik IT Del x BPS Toba, Mar 2026-sekarang",
+      "description": "Mengubah data BPS menjadi infografis dan video untuk publik."
+    },
+    {
+      "title": "DIPTEK BEM-IT DEL",
+      "period": "Departemen Sains & Teknologi BEM IT Del, Jan 2026-sekarang",
+      "description": "Poster, video, dan Instagram departemen untuk PKM dan GEMASTIK."
+    },
+    {
+      "title": "Asisten Dosen",
+      "description": "Basis Data (Jan-Mei 2026, 50+ mahasiswa) dan Matematika Diskrit (Sep-Des 2025, 50+ mahasiswa)"
+    }
+  ],
+  "skills": [
+    "Product & Design",
+    "UI/UX Design",
+    "Figma",
+    "Wireframing",
+    "Prototyping",
+    "Usability Testing (Maze)",
+    "Draw.io",
+    "Sistem & Analisis",
+    "BPMN",
+    "Requirement Analysis",
+    "SRS",
+    "DFD",
+    "ERD",
+    "MySQL",
+    "Pemrograman",
+    "C",
+    "Java (OOP)",
+    "Web Development",
+    "Indonesia (fasih)",
+    "Inggris (menengah)"
+  ],
+  "workflow": [
+    "Riset lapangan (observasi, wawancara, survei)",
+    "Sintesis (affinity map, empathy map, persona, HMW)",
+    "Rancang (information architecture, user flow, wireframe sampai hi-fi Figma)",
+    "Uji (usability test remote lewat Maze)",
+    "Iterasi berdasarkan bukti"
+  ],
+  "achievements": [
+    {
+      "title": "Juara 2 Kompetisi UI/UX HIMIVERSE 2.0 UNSURYA",
+      "description": "TemanImun-Aplikasi Pendamping Imunisasi Anak Indonesia (Kompetisi Nasional)"
+    },
+    {
+      "title": "Outstanding Student",
+      "description": "Mahasiswa Berprestasi Program Studi Sistem Informasi, Institut Teknologi Del (2026)"
+    },
+    {
+      "title": "Penerima Beasiswa",
+      "description": "Penerima beasiswa PANDI (Pengelola Nama Domain Internet Indonesia); Penerima Beasiswa Prestasi Institut Teknologi Del"
+    }
+  ]
+}
